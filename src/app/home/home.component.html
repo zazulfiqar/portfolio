@@ -1,0 +1,100 @@
+
+<div class="min-h-screen">
+  <div class="main bg-white">
+    <div class="grid w-11 m-auto">
+      <div class="col-12 md:col-3 lg:col-3">
+        <div class="card p-3 ">
+          <p class=" text-2xl font-bold p-0 mt-4 mb-3 headerTitle">Brands</p>
+          <ul
+            class="list-none  bg-white text-sm p-0 m-0 topBrandsList"
+            *ngFor="let prod of listData; let i = index">
+            <li class="m-0 p-2 border-bottom-1 border-800" *ngIf="i < 10">
+              {{ prod?.label }}
+              <p-badge [value]="prod?.items?.length" class="badge text-right"></p-badge>
+              
+            </li>
+          </ul>
+          
+          
+        </div>
+        <div class="card p-3 ">
+          <p class=" text-2xl font-bold p-0 mt-4 mb-3 headerTitle">Advance Filter</p>
+          <div class="flex">
+            <p-dropdown class="m-2" formControlName="product" [options]="listData" optionLabel="label"></p-dropdown>
+            <p-dropdown class="m-2" formControlName="product" [options]="listData" optionLabel="label"></p-dropdown>
+            
+          </div>
+          </div>
+        
+     
+      </div>
+      <div class="col-12 md:col-9 lg:col-9 p-0">
+        <div class="imageHeader w-full">
+          <img src="../../assets/images/pngegg.png" class="imgHeader " />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="main  m-0 p-0 w-full">
+  <div class="grid w-12 m-auto secondBlock ">
+    <div class=" text-5xl text-center font-bold p-0 pl-2 mt-4 mb-3 headerTitle block2Desc w-full">
+      TOP BRANDS
+    </div>
+    <div class="title w-full   text-2xl p-4">Latest Mobile Phones </div>
+
+
+<div  class="grid flex latestBlock   w-full m-2 p-2" *ngFor="let prod of listData;let i = index" >
+  <ng-container >
+    <div class="col-12 md:col-3 lg:col-3" >
+      <div class="card2 ">
+        <div class="imgPortion2 w-4 h-4 w-2">
+          <img src="../../assets/images/pngegg.png" class="cardImagesLeft" />
+        </div>
+        <div class="titlePortionImage p-2 w-10">
+          <span class="cardTitle list-none  text-sm pl-0 m-0 topBrandsList">{{prod.label}}</span>
+          <div class="moreButtonDiv">
+            <span class="moreButton  text-1xl font-bold  headerTitle">More</span>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-12 md:col-9 lg:col-9" >
+    <div class="grid">
+      <div class="col-12 md:col-3 lg:col-3   cardThub" *ngFor="let prods of prod?.items">
+        <div class="flex cardThumnails" (click)="prodDetails(prod.id,prods.id)">
+          <div class="imgPortion h-4 w-3">
+            <img [src]="prods?.Images?.frontImage" class="cardImages p2" />
+          </div>
+          <div class="titlePortion p-2 w-10" [ngStyle]="{background: prods?.color }">
+            <span class="cardTitle list-none  text-sm pl-0 m-0 topBrandsList"> {{prods.label}}</span>
+           
+            <div class="colors flex " >
+              <span class="cardTitle list-none  text-xs pl-0 m-0 topBrandsList"> Colors :</span>
+             <div  *ngFor="let colors of prods.colors" class="colorsDiv" [ngStyle]="{background: colors?.colorName }" ></div>
+            </div>
+  
+             <div class="moreButtonDiv">
+              <!-- <span class="moreButton text-50 text-1xl font-bold  headerTitle">More</span> -->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+  
+  </div>
+  </ng-container>
+ 
+
+
+
+
+
+
+  </div>
+
+</div>
+</div>
